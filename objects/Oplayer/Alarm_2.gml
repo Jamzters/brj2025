@@ -1,0 +1,3 @@
+ammo = ammomax
+
+reloading = false
