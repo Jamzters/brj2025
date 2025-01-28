@@ -1,1 +1,1 @@
-hithori = false
+knockbackstate = false

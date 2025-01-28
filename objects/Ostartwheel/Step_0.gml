@@ -2,7 +2,7 @@ x = Osectionchoose.x
 
 y = Osectionchoose.y+75
 
-if global.wheelspinonscreen = true
+if global.wheelui = true
 {
 	image_alpha = 1
 }

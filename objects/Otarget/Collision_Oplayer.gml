@@ -1,8 +1,15 @@
 if other.sawstate = true
 {
 	flash = 3
-	hp -= other.sawspd
+	hp -= other.sawdmg + round(other.sawspd / 5)
 	
+	if other.chainsofzues = true
+	{
+		debuf_E = true
+		alarm[0]=200
+	}
+	//recoil
+	{
 	if other.x > x
 	{
 		other.hsp = 1
@@ -33,5 +40,6 @@ if other.sawstate = true
 	if other.y < y +10
 	{
 		other.vsp -= 3
+	}
 	}
 }

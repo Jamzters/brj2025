@@ -3,6 +3,22 @@ if reloadtime <= 0
 	reloadtime = 1
 }
 
+if GOCactivated = true
+{
+	energy -= GOCenergycost
+}
+
+if energy <= 0
+{
+	energy = 0
+	GOCactivated = false
+}
+
+if energy < energymax and GOCactivated = false and sawstate = false and reloading = false
+{
+	energy += energyregain
+}
+
 var key_jump = keyboard_check(vk_space)
 
 var key_right = keyboard_check(ord("D"))
@@ -19,10 +35,11 @@ if ammo < ammomax
 
 var move = key_right - key_left
 
-if sawstate = false
+if sawstate = false and knockbackstate = false
 {
 mask_index = Splayer
 mousedir = point_direction(x,y,mouse_x,mouse_y)
+TOTactivated = false
 //movement
 {
 if place_meeting(x,y+vsp,Owall) and key_jump
@@ -93,7 +110,6 @@ if sawstate = true
 	
     if place_meeting(x,y-vsp,Owall)
 	{
-		y += 2
 		vsp = 1
 	}
 	
@@ -129,6 +145,67 @@ if sawstate = true
 	
     if !alarm[1]{alarm[1]=sawtime}
 }
+
+if knockbackstate = true
+{
+	reloading = false
+	sawstate = false
+	
+	//collision
+	{
+	if place_meeting(x+hsp,y,Owall)
+{	
+	while !place_meeting(x+sign(hsp),y,Owall)
+	{
+		x = x + sign(hsp)
+	}
+	hsp = 0
+}
+
+if place_meeting(x,y+vsp,Owall)
+{
+	while !place_meeting(x,y+sign(vsp),Owall)
+	{
+		y = y + sign(vsp)
+		inair = true
+	}
+	vsp = 0
+	inair = false
+}
+	
+
+x = x + hsp
+
+y = y + vsp
+
+}
+	vsp = vsp + grv
+	
+	if Otarget.x > x
+	{
+		if !place_meeting(x,y+sign(vsp),Owall)
+		{
+			hsp = -knockbackamount
+		}
+		else
+		{
+			hsp = 0
+		}
+	}
+	
+	if Otarget.x < x
+	{
+		if !place_meeting(x,y+sign(vsp),Owall)
+		{
+			hsp = knockbackamount
+		}
+		else
+		{
+			hsp = 0
+		}
+	}
+}
+	
 
 if reloading = true
 {

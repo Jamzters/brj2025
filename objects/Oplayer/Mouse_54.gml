@@ -1,4 +1,4 @@
-if charged = false
+if charged = false and knockbackstate = false
 {
 	alarm[0] = sawchargetime
 }

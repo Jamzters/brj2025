@@ -1,8 +1,8 @@
-switch global.wheelspinonscreen
+switch global.wheelui
 {
-	case true: global.wheelspinonscreen = false
+	case true: global.wheelui = false
 	break;
 	
-	case false: global.wheelspinonscreen = true
+	case false: global.wheelui = true
 	break;
 }

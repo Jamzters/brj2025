@@ -1,3 +1,4 @@
-global.wheelspinonscreen = false
+global.wheelui = false
 
 global.selection = 1
+

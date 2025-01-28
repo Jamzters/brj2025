@@ -1,4 +1,4 @@
-if global.wheelspinonscreen = true
+if global.wheelui = true
 {
 draw_self()
 
