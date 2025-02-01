@@ -8,4 +8,7 @@ draw_self();
 shader_reset();
 }
 
-draw_text(x,y-30,hp)
+draw_set_color(c_black)
+draw_text(x,y-30,directionchose)
+
+draw_text(x,y-60,movespd)

@@ -3,10 +3,20 @@ if other.sawstate = true
 	flash = 3
 	hp -= other.sawdmg + round(other.sawspd / 5)
 	
+	if attack3 = true
+	{	
+		alarm[4] = false
+		attack3 = false
+		directionchose = 5
+		image_speed = 1
+		image_index = 4
+	}
+	
 	if other.chainsofzues = true
 	{
 		debuf_E = true
-		alarm[0]=200
+		alarm[0]=debuftime
+		movespd = 0
 	}
 	//recoil
 	{

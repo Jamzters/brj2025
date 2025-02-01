@@ -18,7 +18,9 @@ knockbackstate = false
 
 energy = 30
 energymax = 30
-energyregain = 0.01
+energyregain = 0.02
+
+hp = 20
 
 //gun
 {
@@ -50,7 +52,7 @@ sawtime = 300
 sawspd = 5
 sawdmg = 3
 sawbounce = 1
-sawchargetime = 60
+sawchargetime = 40
 
 chainsofzues = true
 spinningframe = false

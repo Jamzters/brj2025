@@ -90,6 +90,11 @@ else
 
 if sawstate = true
 {
+	if sawspd = 0
+	{
+		alarm[1]=1
+	}
+	
 	reloading = false
     sprite_index = Splayersaw
     
@@ -104,14 +109,13 @@ if sawstate = true
 	{
 		image_angle += sawspd * 3
 	}
+	
+	image_angle = round(image_angle)
 	}
 	
     mask_index = Splayersaw
 	
-    if place_meeting(x,y-vsp,Owall)
-	{
-		vsp = 1
-	}
+	var wall = instance_place(x,y+vsp,Owall)
 	
     if place_meeting(x,y+vsp,Owall)
     {
@@ -127,7 +131,16 @@ if sawstate = true
         {
 			vsp = 0
             sawspd -= 1
+			
+			if Oplayer.y < wall.y
+			{
 			vsp -= random_range(1,sawspd) * sawbounce
+			}
+			
+			if Oplayer.y > wall.y
+			{
+			vsp += random_range(1,sawspd) * sawbounce
+			}
         }
         else
 		{
@@ -181,7 +194,7 @@ y = y + vsp
 }
 	vsp = vsp + grv
 	
-	if Otarget.x > x
+	if Oboss.x > x
 	{
 		if !place_meeting(x,y+sign(vsp),Owall)
 		{
@@ -193,7 +206,7 @@ y = y + vsp
 		}
 	}
 	
-	if Otarget.x < x
+	if Oboss.x < x
 	{
 		if !place_meeting(x,y+sign(vsp),Owall)
 		{

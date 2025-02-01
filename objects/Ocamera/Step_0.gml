@@ -17,7 +17,7 @@ camera_set_view_pos(cam,x-view_w_half,y-view_h_half);
 if boss = true
 {
 	var targ1 = Oplayer
-var targ2 = Otarget
+var targ2 = Oboss
 
 var x_dif = abs((targ1.x - targ2.x)/2)
 var y_dif = abs((targ1.y - targ2.y)/2)
